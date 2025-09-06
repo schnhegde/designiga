@@ -11,6 +11,7 @@ export interface Project {
   imageUrl: string; // Main image for card display
   folderId: string;
   images?: ProjectImage[]; // All images in the project (optional for backward compatibility)
+  description?: string; // Story text from story.txt file
 }
 
 export interface ProjectContextType {

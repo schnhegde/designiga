@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Project } from '../types/project';
 
 interface ProjectCardProps {
@@ -26,9 +27,11 @@ export default function ProjectCard({
     >
       {/* Image Section */}
       <div className="relative overflow-hidden rounded-lg mb-6">
-        <img
+        <Image
           src={project.imageUrl}
           alt={`${project.name} Project`}
+          width={400}
+          height={384}
           className="w-full h-96 object-cover transition-transform duration-300 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300" />

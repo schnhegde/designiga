@@ -46,7 +46,7 @@ export async function fetchProjectsFromDrive(): Promise<Project[]> {
 
     console.log(`Found ${folders.length} folders in Google Drive`);
 
-    // For each folder, look for main.png
+    // For each folder, look for main.png and story.txt
     for (const folder of folders) {
       if (!folder.id || !folder.name) continue;
 
@@ -62,6 +62,32 @@ export async function fetchProjectsFromDrive(): Promise<Project[]> {
         if (mainPngFile?.id) {
           // Use our proxy endpoint to serve the image
           const imageUrl = `/api/image/${mainPngFile.id}`;
+          
+          // Check for story.txt file
+          let description = '';
+          try {
+            const storyResponse = await drive.files.list({
+              q: `'${folder.id}' in parents and name='story.txt'`,
+              fields: 'files(id, name)',
+            });
+
+            const storyFile = storyResponse.data.files?.[0];
+            if (storyFile?.id) {
+              // Download the story.txt content
+              const storyContent = await drive.files.get({
+                fileId: storyFile.id,
+                alt: 'media',
+              }, {
+                responseType: 'text'
+              });
+              
+              description = storyContent.data as string;
+              console.log(`Found story.txt for ${folder.name}: ${description.length} characters`);
+            }
+          } catch (storyError) {
+            console.log(`No story.txt found in folder: ${folder.name}`);
+          }
+          
           console.log(`Created project: ${folder.name} with image URL: ${imageUrl}`);
           
           projects.push({
@@ -69,6 +95,7 @@ export async function fetchProjectsFromDrive(): Promise<Project[]> {
             name: folder.name,
             imageUrl,
             folderId: folder.id,
+            description: description || undefined,
           });
         } else {
           console.log(`No main.png found in folder: ${folder.name}`);

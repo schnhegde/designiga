@@ -38,13 +38,13 @@ export default function About() {
           </h1>
           <div className="prose prose-lg max-w-3xl mx-auto text-gray-600 leading-relaxed">
             <p className="mb-6">
-              As a passionate logo designer based in Bengaluru, I specialize in creating clean, thoughtful visual identities that help businesses make a lasting impression. With over 5 years of experience in brand design, I understand that a logo is more than just a pretty picture—it's the foundation of your brand's visual language.
+              As a passionate logo designer based in Bengaluru, I specialize in creating clean, thoughtful visual identities that help businesses make a lasting impression. With over 5 years of experience in brand design, I understand that a logo is more than just a pretty picture—it&apos;s the foundation of your brand&apos;s visual language.
             </p>
             <p className="mb-6">
-              My approach combines strategic thinking with creative execution. I dive deep into understanding your business, your values, and your target audience to create logos that not only look great but also communicate your brand's essence effectively. Whether you're a startup looking to establish your presence or an established company ready for a refresh, I'm here to help you stand out in today's competitive market.
+              My approach combines strategic thinking with creative execution. I dive deep into understanding your business, your values, and your target audience to create logos that not only look great but also communicate your brand&apos;s essence effectively. Whether you&apos;re a startup looking to establish your presence or an established company ready for a refresh, I&apos;m here to help you stand out in today&apos;s competitive market.
             </p>
             <p>
-              Every project is a collaboration. I believe in working closely with my clients throughout the design process, ensuring that the final result not only meets but exceeds your expectations. Let's work together to create a visual identity that truly represents who you are and where you're going.
+              Every project is a collaboration. I believe in working closely with my clients throughout the design process, ensuring that the final result not only meets but exceeds your expectations. Let&apos;s work together to create a visual identity that truly represents who you are and where you&apos;re going.
             </p>
           </div>
         </div>

@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
     
     return NextResponse.json(projects, {
       headers: {
-        'Cache-Control': 'public, max-age=86400, stale-while-revalidate=3600', // 24 hours cache
+        'Cache-Control': 'public, max-age=300, stale-while-revalidate=60', // 5 minutes cache
         'X-Cache': 'HIT',
         'X-Last-Updated': cacheInfo?.lastUpdated || 'unknown',
         'X-Next-Update': cacheInfo?.nextUpdate || 'unknown',

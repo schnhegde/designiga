@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { Project } from '../../types/project';
 
 export default function ProjectDetailsPage() {
@@ -112,9 +113,22 @@ export default function ProjectDetailsPage() {
         </div>
       </div>
 
+      {/* Hero Description */}
+      {project.description && (
+        <div>
+          <div className="max-w-6xl mx-auto px-6 py-12">
+            <div className="prose prose-xl max-w-none pl-4">
+              <p className="text-gray-700 leading-relaxed text-left text-xl">
+                {project.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Image Gallery */}
       <div className="max-w-6xl mx-auto px-6 py-8">
-        <div className="space-y-8">
+        <div className="space-y-4">
           {project.images && project.images.length > 0 ? (() => {
             // Sort images to show main image first
             const sortedImages = [...project.images].sort((a, b) => {
@@ -130,9 +144,11 @@ export default function ProjectDetailsPage() {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="relative overflow-hidden rounded-lg shadow-lg">
-                  <img
+                  <Image
                     src={image.url}
                     alt={`${project.name} - ${image.name}`}
+                    width={1200}
+                    height={800}
                     className="w-full h-auto object-contain transition-all duration-500 group-hover:scale-105"
                     loading="lazy"
                     onLoad={(e) => {
